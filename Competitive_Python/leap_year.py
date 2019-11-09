@@ -22,7 +22,6 @@ def is_leap_year(year_c: int):
             else:
                 leap = False
                 return leap
-       # print('entering')
         leap = True
         return leap
     return leap

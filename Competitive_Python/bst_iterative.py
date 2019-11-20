@@ -14,6 +14,9 @@ class BstNode:
 
 
 class Solution:
+    def __init__(self):
+        self.ans = False
+
     def in_order(self, root: BstNode) -> list:
         '''
         inorder iteration using stack concept
@@ -91,22 +94,41 @@ class Solution:
                     print(current.key)
                     current = current.right
 
+    def sum_traversal(self, root: BstNode, sum_num: int) -> bool:
+        def helper(current_node: BstNode, key_sum: int):
+            if current_node.left is None and current_node.right is None:
+                # then we are definitely at the leaf node..
+                if key_sum == sum_num:
+                    self.ans = True
+            if current_node.left is not None:
+                # Explore left subtree
+                helper(current_node.left, key_sum+current_node.left.key)
+            if current_node.right is not None:
+                # Explore the right subtree (But from very root again)
+                helper(current_node.right, key_sum+current_node.right.key)
+            # return False
+        helper(root, root.key)
+        return self.ans
+
 
 if __name__ == '__main__':
     # Create a fixed BST
     bst_node = BstNode(1)
-    bst_node.left = BstNode(3)
-    bst_node.left.left = BstNode(2)
-    bst_node.left.right = BstNode(4)
-    bst_node.right = BstNode(6)
-    bst_node.right.left = BstNode(8)
-    bst_node.right.right = BstNode(7)
+    bst_node.left = BstNode(-3)
+    bst_node.left.left = BstNode(-2)
+    bst_node.left.left.left = BstNode(7)
+    bst_node.left.left.left.left = BstNode(-10)
+    # bst_node.left.right = BstNode(4)
+    # bst_node.right = BstNode(6)
+    # bst_node.right.left = BstNode(8)
+    # bst_node.right.right = BstNode(7)
     # inorder invoke
     new_inorder = Solution()
     print(new_inorder.in_order(bst_node))
     print(new_inorder.post_order(bst_node))
     print(new_inorder.pre_order(bst_node))
-    print(new_inorder.morris_inorder(bst_node))
+    # print(new_inorder.morris_inorder(bst_node))
+    print(new_inorder.sum_traversal(bst_node, -7))
 
 
 

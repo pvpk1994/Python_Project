@@ -25,7 +25,7 @@ class Clock:
     So for 3:30 hour_angle - min_angle ~ (210)*0.5 - 180 ~ 75 degrees
     '''
     def hour_angle(self):
-        if self.hour >= 12 and self.hour < 24:
+        if 12 <= self.hour < 24:
             self.hour -= 12
         elif self.hour == 24:
             self.hour = 0
@@ -39,7 +39,7 @@ class Clock:
     def minute_angle(self):
         if self.minute == 60:
             self.minute = 0
-        elif self.minute >60:
+        elif self.minute > 60:
             raise ValueError('Invalid Minute')
         angle_minute = self.minute*6
         return angle_minute

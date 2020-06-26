@@ -10,11 +10,11 @@ class Rent:
         self.current_bill = current_bill
 
     def basic_rent(self):
-        split_half = 1155/2
+        split_half = 1145/2
         room_mates.append({'Kishan': split_half})
         room_mates.append({'Pavan': split_half/2})
         room_mates.append({'Suyash': split_half/2})
-        basic_rent = 1155
+        basic_rent = 1145
         # print(f'{room_mates}')
         return basic_rent
 

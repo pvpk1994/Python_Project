@@ -107,7 +107,7 @@ class Solution:
         Do a level order traversal and check if left subtree is an exact mirror image of right subtree
         :param root:
         :return:
-        Shortcoming: Only works when the tree is a complete tree, else it treats both both lonely leaf
+        Shortcoming: Only works when the tree is a complete tree, else it treats both lonely leaf
         nodes as mirror images which is not true....
         '''
         if root is None:
